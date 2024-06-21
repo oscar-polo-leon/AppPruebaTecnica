@@ -1,0 +1,39 @@
+
+<div class="vI8oZc yL"><div class="wl"></div><div class="wq"></div><div class="wp"></div><div class="wo"></div><div class="wn"></div></div>
+<div class="container-fluid">
+  <header class="d-flex justify-content-between align-items-center p-3 header mb-3 shadow-sm">
+    <div class="d-flex align-items-center">
+      <!-- <i class="bi bi-person-circle h2 me-3 m-auto"></i> -->
+       <span class="user"></span>
+      <span>{{ userEmail }}</span>
+    </div>
+    <button class="btn" (click)="logout()">Cerrar sesión</button>
+  </header>
+
+  <div class="row">
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 rounded shadow-sm">
+
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Lista de Tareas</h1>
+        <button class="btn btn-success" (click)="createTask()" data-bs-toggle="modal" data-bs-target="#taskModal">Crear Nueva Tarea</button>
+      </div>
+
+      <div *ngFor="let task of tasks" class="task-item d-flex border-bottom pb-3">
+        <input class="form-check-input checkbox-task m-auto me-3" type="checkbox" (change)="markAsCompleted($event, task)" value="true" [checked]="task.status" id="task-{{task.id}}">
+        <div class="w-100 d-flex justify-content-between">
+          <div>
+            <span class="text-secondary fs-5" [ngStyle]="{'text-decoration': task.status ? 'line-through' : 'none'}"><span>{{task.dueDate}}</span> | <span class="text-dark">{{ task.title }}</span></span>
+            <p class="fs-6 m-auto" [ngStyle]="{'text-decoration': task.status ? 'line-through' : 'none'}">{{ task.description }}</p>
+          </div>
+          <div class="d-flex">
+            <button *ngIf="!task.status" class="btn btn-light me-3" (click)="editTask(task)" data-bs-toggle="modal" data-bs-target="#taskModal"><i class="bi bi-pencil-square text-primary fs-5"></i></button>
+            <button class="btn btn-light" (click)="deleteTask(task.taskID)"><i class="bi bi-trash3 text-danger fs-5"></i></button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<app-task-modal [modalTitle]="modalTitle" [mode]="modalMode" [taskCurrent]="taskCurrent" (updateTasks)="loadTasks()"></app-task-modal>

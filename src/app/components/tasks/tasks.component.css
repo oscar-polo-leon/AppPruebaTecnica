@@ -1,0 +1,90 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  padding: 0;
+}
+
+header {
+  flex-shrink: 0;
+}
+
+.row {
+  flex-grow: 1;
+  display: flex;
+}
+
+.sidebar {
+  height: 100%;
+}
+
+main {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  height: min-content;
+  margin-inline: 100px;
+  background-color: rgba(255, 255, 255, 0.8);
+  max-height: 700px;
+}
+
+.task-item {
+  margin-bottom: 1rem;
+}
+
+.completed-task {
+  background-color: green; /* Color para tareas completadas */
+}
+
+.incomplete-task {
+  background-color: red; /* Color para tareas no completadas */
+}
+
+.form-check-input:checked{
+  background-color: green;
+  border-color: green;
+}
+
+.checkbox-task{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.wl {
+  background: #f6f8fc;
+  overflow: hidden;
+}
+
+.wl, .wn, .wo, .wp, .wq {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.yL .wp {
+  background: url(//ssl.gstatic.com/ui/v1/icons/mail/themes/gizmos/header_default2.png) no-repeat 230px 33px;
+}
+
+.yL .wn {
+  background: url(//ssl.gstatic.com/ui/v1/icons/mail/themes/gizmos/footer_default.png) no-repeat 205px bottom;
+}
+
+.my-custom-title {
+  font-size: 2em;
+}
+
+.user
+{
+  background-image: url("../../../../public/user.png");
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+}

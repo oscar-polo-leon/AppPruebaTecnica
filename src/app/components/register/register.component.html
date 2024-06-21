@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="backgruond">
+  </div>
+<div class="container">
+  <h2 class="text-primary">Registrarse</h2>
+  <form (ngSubmit)="register()">
+    <div class="form-group mb-3">
+      <label for="username">Nombre de usuario</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" required>
+    </div>
+    <div class="form-group mb-3">
+      <label for="email">Correo eléctronico</label>
+      <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
+    </div>
+    <div class="form-group mb-3">
+      <label for="password">Contraseña</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required>
+    </div>
+    <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-primary fw-bold mb-3">Registrarse</button>
+    <button type="submit" class="btn btn-light" (click)="navigateToLogin()">Iniciar sesión</button>
+    </div>
+  </form>
+</div>
+</div>
