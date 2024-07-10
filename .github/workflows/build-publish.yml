@@ -1,0 +1,29 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - master  # ajusta según tus configuraciones de rama
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build --prod
+
+      - name: Package as npm
+        run: npm pack
+
+      - name: Publish to npm
+        uses: actions/npm@latest
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}  # asegúrate de configurar este secreto en la configuración de tu repositorio
+          access: public  # o private según tus necesidades
+          args: publish *.tgz
