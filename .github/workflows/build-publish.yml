@@ -1,29 +1,33 @@
-name: Build and Publish
+name: Node.js Package
 
 on:
-  push:
-    branches:
-      - master  # ajusta según tus configuraciones de rama
+  release:
+    types: [created]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Angular app
-        run: npm run build --prod
-
-      - name: Package as npm
-        run: npm pack
-
-      - name: Publish to npm
-        uses: actions/npm@latest
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          token: ${{ secrets.NPM_AUTH_TOKEN }}  # asegúrate de configurar este secreto en la configuración de tu repositorio
-          access: public  # o private según tus necesidades
-          args: publish *.tgz
+          node-version: 16
+      - run: npm ci
+      - run: npm test
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

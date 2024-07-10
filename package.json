@@ -1,5 +1,5 @@
 {
-  "name": "app-prueba-tecnica",
+  "name": "@oscar-polo-leon/app-prueba-tecnica",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,6 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:AppPruebaTecnica": "node dist/app-prueba-tecnica/server/server.mjs"
+  },
+  "publishConfig": {
+    "@oscar-polo-leon:registry": "https://npm.pkg.github.com"
   },
   "private": true,
   "dependencies": {
