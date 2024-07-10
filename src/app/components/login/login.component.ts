@@ -21,24 +21,26 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router, private toastService: ToastService) {}
 
   ngOnInit() {
-    if(this.authService.isLoggedIn()){
-      this.router.navigate(['/tasks']);
-    }
+    // if(this.authService.isLoggedIn()){
+    //   this.router.navigate(['/tasks']);
+    // }
   }
 
   login() {
-    if(this.credentials.email == "" || this.credentials.password == "")
-    {
-      this.toastService.showToast("Faltan datos por ingresar", "error");
-      return;
-    }
-    this.authService.login(this.credentials).subscribe(
-      (res: any) => {
-        this.authService.setToken(res.token);
-        this.router.navigate(['/tasks']);
-      },
-      err => this.toastService.showToast("Error. Por favor contacte a sóporte técnico", "error")
-    );
+    console.log("9");
+    this.router.navigate(['/tasks']);
+    // if(this.credentials.email == "" || this.credentials.password == "")
+    // {
+    //   this.toastService.showToast("Faltan datos por ingresar", "error");
+    //   return;
+    // }
+    // this.authService.login(this.credentials).subscribe(
+    //   (res: any) => {
+    //     this.authService.setToken(res.token);
+    //     this.router.navigate(['/tasks']);
+    //   },
+    //   err => this.toastService.showToast("Error. Por favor contacte a sóporte técnico", "error")
+    // );
   }
 
   navigateToRegister(){
