@@ -12,7 +12,6 @@
   "publishConfig": {
     "@oscar-polo-leon:registry": "https://npm.pkg.github.com"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^18.0.0",
     "@angular/common": "^18.0.0",
