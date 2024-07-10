@@ -12,7 +12,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Clear npm cache
       - run: npm cache clean --force
       - run: npm ci
       # - run: npm test
@@ -29,6 +28,7 @@ jobs:
         with:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
+      - run: npm cache clean --force
       - run: npm ci
       - run: npm publish
         env:
